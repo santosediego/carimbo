@@ -4,6 +4,10 @@ Marca d'água em imagem direto no navegador. Sem upload, sem servidor, sem conta
 
 Você solta uma imagem, escreve o texto, ajusta e baixa. A imagem é lida, carimbada e salva **dentro da própria aba** — nada trafega pela rede. Dá pra tirar a internet da tomada e continuar funcionando.
 
+**▶ [Testar ao vivo](https://santosediego.github.io/carimbo/)**
+
+![Carimbo: marca d'água repetida sobre uma CNH de exemplo, com controles de texto, opacidade e rotação](docs/screenshot.png)
+
 ## Por que sem servidor
 
 Marca d'água num documento costuma ser algo que você não quer que vaze. Mandar o arquivo pra um servidor só pra carimbar seria criar exatamente o risco que a marca d'água tenta evitar.
