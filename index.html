@@ -349,10 +349,12 @@
       const pad = fontPx * 0.7;
       let x = W / 2, y = H / 2;
       const half = m.width / 2 + pad;
-      if (state.pos.includes('l')) x = half;
-      if (state.pos.includes('r')) x = W - half;
-      if (state.pos.includes('t')) y = fontPx / 2 + pad;
-      if (state.pos.includes('b')) y = H - fontPx / 2 - pad;
+      if (state.pos !== 'center') {
+        if (state.pos.includes('l')) x = half;
+        if (state.pos.includes('r')) x = W - half;
+        if (state.pos.includes('t')) y = fontPx / 2 + pad;
+        if (state.pos.includes('b')) y = H - fontPx / 2 - pad;
+      }
       ctx.save(); ctx.translate(x, y); ctx.rotate(rad); ctx.fillText(text, 0, 0); ctx.restore();
     } else {
       const m = ctx.measureText(text);
