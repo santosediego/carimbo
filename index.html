@@ -477,7 +477,7 @@
       }
 
       // ---- input wiring ----
-      $('txt').addEventListener('input', e => {state.text = e.target.value; render();});
+      $('txt').addEventListener('input', e => {state.text = e.target.value; scheduleRender();});
 
       document.querySelectorAll('#mode button').forEach(b => {
         b.addEventListener('click', () => {
@@ -486,16 +486,16 @@
           state.mode = b.dataset.mode;
           $('posWrap').style.display = state.mode === 'single' ? 'block' : 'none';
           $('gapWrap').style.display = state.mode === 'tile' ? 'block' : 'none';
-          render();
+          scheduleRender();
         });
       });
-      $('pos').addEventListener('change', e => {state.pos = e.target.value; render();});
+      $('pos').addEventListener('change', e => {state.pos = e.target.value; scheduleRender();});
 
       const bindRange = (id, valId, key, fmt) => {
         $(id).addEventListener('input', e => {
           state[key] = parseFloat(e.target.value);
           $(valId).textContent = fmt(state[key]);
-          render();
+          scheduleRender();
         });
       };
       bindRange('size', 'sizeVal', 'size', v => v + '%');
@@ -505,7 +505,7 @@
 
       const syncColor = v => {
         if (!/^#[0-9a-fA-F]{6}$/.test(v)) return;
-        state.color = v; $('color').value = v; $('colorHex').value = v; render();
+        state.color = v; $('color').value = v; $('colorHex').value = v; scheduleRender();
       };
       $('color').addEventListener('input', e => syncColor(e.target.value));
       $('colorHex').addEventListener('input', e => syncColor(e.target.value.trim()));
