@@ -371,7 +371,7 @@
         <h2>Ajustes</h2>
 
         <label for="txt">Texto da marca</label>
-        <input type="text" id="txt" value="CONFIDENCIAL" autocomplete="off" spellcheck="false">
+        <input type="text" id="txt" value="" autocomplete="off" spellcheck="false">
 
         <label>Disposição</label>
         <div class="seg" id="mode">
@@ -392,8 +392,8 @@
 
         <label for="size">Tamanho <span style="color:var(--muted)">(% da largura)</span></label>
         <div class="rangewrap">
-          <input type="range" id="size" min="2" max="20" value="6" step="0.5">
-          <span class="val" id="sizeVal">6%</span>
+          <input type="range" id="size" min="2" max="20" value="4" step="0.5">
+          <span class="val" id="sizeVal">4%</span>
         </div>
 
         <label for="op">Opacidade</label>
@@ -411,8 +411,8 @@
         <div id="gapWrap">
           <label for="gap">Espaçamento</label>
           <div class="rangewrap">
-            <input type="range" id="gap" min="1" max="4" value="2" step="0.1">
-            <span class="val" id="gapVal">2.0×</span>
+            <input type="range" id="gap" min="1" max="4" value="1.7" step="0.1">
+            <span class="val" id="gapVal">1.7×</span>
           </div>
         </div>
 
@@ -455,13 +455,22 @@
   <script>
     (() => {
       const $ = id => document.getElementById(id);
+      const today = new Date().toLocaleDateString('pt-BR');
       const canvas = $('canvas'), ctx = canvas.getContext('2d');
       let img = null, fileName = 'imagem';
 
       const state = {
-        text: 'CONFIDENCIAL', mode: 'tile', pos: 'center',
-        size: 6, opacity: 40, rotation: -30, gap: 2, color: '#4a4a4a'
+        text: `Somente para verificação – ${today}`, mode: 'tile', pos: 'center',
+        size: 4, opacity: 40, rotation: -30, gap: 1.7, color: '#4a4a4a'
       };
+      $('txt').value = state.text;
+
+      let queued = false;
+      function scheduleRender() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {queued = false; render();});
+      }
 
       // ---- input wiring ----
       $('txt').addEventListener('input', e => {state.text = e.target.value; render();});
