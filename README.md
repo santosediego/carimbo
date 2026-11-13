@@ -1,5 +1,11 @@
 # Carimbo
 
+[![Licença](https://img.shields.io/github/license/santosediego/carimbo?style=for-the-badge)](https://github.com/santosediego/carimbo/blob/main/LICENSE)
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
 Marca d'água em imagem direto no navegador. Sem upload, sem servidor, sem conta.
 
 Você solta uma imagem, escreve o texto, ajusta e baixa. A imagem é lida, carimbada e salva **dentro da própria aba** — nada trafega pela rede. Dá pra tirar a internet da tomada e continuar funcionando.
@@ -21,6 +27,8 @@ Aqui o processamento é 100% local, via `<canvas>`. O arquivo nunca sai do seu d
 - Pré-visualização ao vivo
 - Exportação na **resolução original** da imagem, não na do preview
 - Formatos de entrada: PNG, JPG e WebP
+- Saída em **JPG** (menor, padrão para fotos) ou **PNG** (sem perda). Por padrão acompanha o formato da imagem original.
+- Já abre com um padrão pra documentos: "Somente para verificação" com a data do dia, em cinza discreto, repetido na diagonal. Na maioria dos casos é soltar a imagem e baixar.
 
 ## Como usar
 
@@ -34,6 +42,6 @@ Não tem build, não tem dependência, não tem instalação. É um arquivo só.
 
 HTML, CSS e JavaScript puro. Zero dependências, zero frameworks. A manipulação de imagem usa a Canvas API nativa do navegador.
 
-## Licença
+## Autor
 
-MIT. Use, modifique e distribua à vontade.
+[Diego Santos](https://www.linkedin.com/in/santosediego/ "Perfil Linkedin Diego Santos")
