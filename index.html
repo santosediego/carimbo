@@ -439,6 +439,10 @@
         <div class="canvas-holder" id="holder">
           <canvas id="canvas"></canvas>
           <div class="actions">
+            <select id="fmt" aria-label="Formato de saída" style="width:auto">
+              <option value="image/jpeg">JPG (menor)</option>
+              <option value="image/png">PNG</option>
+            </select>
             <button class="btn primary" id="download">Baixar imagem</button>
             <button class="btn ghost" id="reset">Trocar imagem</button>
           </div>
@@ -521,6 +525,7 @@
 
       function loadFile(f) {
         fileName = f.name.replace(/\.[^.]+$/, '') || 'imagem';
+        $('fmt').value = f.type === 'image/png' ? 'image/png' : 'image/jpeg';
         const reader = new FileReader();
         reader.onload = ev => {
           const i = new Image();
@@ -601,13 +606,15 @@
 
       $('download').addEventListener('click', () => {
         if (!img) return;
+        const type = $('fmt').value;
+        const ext = type === 'image/png' ? 'png' : 'jpg';
         canvas.toBlob(blob => {
           const a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
-          a.download = `${fileName}-marca.png`;
+          a.download = `${fileName}-marca.${ext}`;
           a.click();
           setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-        }, 'image/png');
+        }, type, 0.92);
       });
     })();
   </script>
